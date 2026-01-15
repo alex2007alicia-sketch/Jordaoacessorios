@@ -128,17 +128,26 @@ function calcularTotal() {
 <label>Total</label>
 <input type="text" id="total" placeholder="R$ 0,00" readonly>
 
-  <select id="pagamento">
-    <option value="">Forma de pagamento</option>
-    <option>Pix</option>
-    <option>Dinheiro</option>
-    <option>Cartão</option>
-  </select>
+  <label>Forma de pagamento</label>
+<select id="pagamento">
+  <option value="">Selecione</option>
+  <option value="PIX">PIX</option>
+  <option value="Dinheiro">Dinheiro</option>
+  <option value="Cartão">Cartão</option>
+</select>
+
+<div id="pixInfo" style="display:none; margin-top:10px; padding:10px; background:#f1f1f1; border-radius:8px;">
+  <strong>💳 Pagamento via PIX</strong><br>
+  Chave PIX: <b id="pixChave">81988052139</b><br>
+  <small>Envie o comprovante no WhatsApp após o pagamento.</small>
+</div>
 
   <textarea id="obs" rows="3" placeholder="Observações"></textarea>
 
   <button onclick="enviarPedido()">ENVIAR PEDIDO</button>
-</div>
+</div> const chavePix = "81988052139";💳 Pagamento: ${pagamento}
+🔑 Chave PIX: ${chavePix}
+
 
 <footer>
   📞 81 98805-2139 <br>
@@ -146,6 +155,16 @@ function calcularTotal() {
 </footer>
 
 https://alex2007alicia-sketch.github.io/Jordaoacessorios/
+<script>
+document.getElementById("pagamento").addEventListener("change", function () {
+  const pixDiv = document.getElementById("pixInfo");
+  if (this.value === "PIX") {
+    pixDiv.style.display = "block";
+  } else {
+    pixDiv.style.display = "none";
+  }
+});
+</script>
 
 </body>
 </html>
