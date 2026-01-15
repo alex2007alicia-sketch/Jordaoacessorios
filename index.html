@@ -177,15 +177,6 @@ function enviarPedido() {
     alert("Preencha todos os campos.");
     return;
   }
-function copiarPix() {
-  var chave = document.getElementById("pixChave").innerText;
-  navigator.clipboard.writeText(chave).then(function () {
-    document.getElementById("pixMsg").style.display = "block";
-    setTimeout(() => {
-      document.getElementById("pixMsg").style.display = "none";
-    }, 2000);
-  });
-}
 </script>
 
   
@@ -208,6 +199,9 @@ function copiarPix() {
     "_blank"
   );
 }
+</script>
+
+  
 </script>
 
 
