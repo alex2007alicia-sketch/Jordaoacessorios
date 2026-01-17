@@ -123,11 +123,23 @@
   <option value="Cartão">Cartão</option>
 </select>
 
-<div id="pixInfo" style="display:none; margin-top:10px; padding:10px; background:#f1f1f1; border-radius:8px;">
+<div id="pixInfo" style="display:none; margin-top:10px; padding:10px; background:#f1f1f1; border-radius:8px; text-align:center;">
   <strong>💳 Pagamento via PIX</strong><br><br>
+
   <span id="pixChave">81988052139</span><br><br>
+
   <button type="button" onclick="copiarPix()">📋 Copiar PIX</button>
   <p id="pixMsg" style="color:green; display:none;">PIX copiado!</p>
+
+  <br>
+
+  <img 
+    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=81988052139"
+    alt="QR Code PIX"
+    style="margin-top:10px;"
+  >
+
+  <p style="font-size:12px;">Escaneie o QR Code para pagar</p>
 </div>
 
   <textarea id="obs" rows="3" placeholder="Observações"></textarea>
