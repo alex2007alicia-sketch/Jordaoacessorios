@@ -154,12 +154,6 @@
 
 
 <script>
-function mostrarPix() {
-  var pagamento = document.getElementById("pagamento").value;
-  var pixDiv = document.getElementById("pixInfo");
-  pixDiv.style.display = pagamento === "PIX" ? "block" : "none";
-}
-<script>
 function calcularTotal() {
   var produto = document.getElementById("produto").value;
   var qtd = document.getElementById("quantidade").value;
@@ -169,22 +163,23 @@ function calcularTotal() {
     return;
   }
 
-  var preco = parseFloat(produto.split("|")[1]);
-  var total = preco * qtd;
-  document.getElementById("total").value = "R$ " + total.toFixed(2);
+  var preco = produto.split("|")[1];
+  document.getElementById("total").value = "R$ " + (preco * qtd).toFixed(2);
+}
+
+function mostrarPix() {
+  var pagamento = document.getElementById("pagamento").value;
+  var pixDiv = document.getElementById("pixInfo");
+  pixDiv.style.display = pagamento === "PIX" ? "block" : "none";
 }
 
 function copiarPix() {
   var chave = document.getElementById("pixChave").innerText;
-  navigator.clipboard.writeText(chave).then(() => {
-    document.getElementById("pixMsg").style.display = "block";
-    setTimeout(() => {
-      document.getElementById("pixMsg").style.display = "none";
-    }, 2000);
-  });
+  navigator.clipboard.writeText(chave);
+  document.getElementById("pixMsg").style.display = "block";
 }
 
-function mostrarResumo() {
+function enviarPedido() {
   var nome = document.getElementById("nome").value;
   var telefone = document.getElementById("telefone").value;
   var produtoValor = document.getElementById("produto").value;
@@ -199,53 +194,18 @@ function mostrarResumo() {
   }
 
   var produto = produtoValor.split("|")[0];
-
-  document.getElementById("resumoTexto").innerHTML =
-    "<b>Nome:</b> " + nome + "<br>" +
-    "<b>Telefone:</b> " + telefone + "<br>" +
-    "<b>Produto:</b> " + produto + "<br>" +
-    "<b>Quantidade:</b> " + quantidade + "<br>" +
-    "<b>Total:</b> " + total + "<br>" +
-    "<b>Pagamento:</b> " + pagamento + "<br>" +
-    (obs ? "<b>Obs:</b> " + obs : "");
-
-  document.getElementById("resumoPedido").style.display = "block";
-}
-
-function fecharResumo() {
-  document.getElementById("resumoPedido").style.display = "none";
-}
-
-function confirmarEnvio() {
-  document.getElementById("resumoPedido").style.display = "none";
-  enviarPedido();
-
-}
-
-function enviarPedido() {
-  var nome = document.getElementById("nome").value;
-  var telefone = document.getElementById("telefone").value;
-  var produtoValor = document.getElementById("produto").value;
-  var quantidade = document.getElementById("quantidade").value;
-  var pagamento = document.getElementById("pagamento").value;
-  var total = document.getElementById("total").value;
-  var obs = document.getElementById("obs").value;
-
-  var produto = produtoValor.split("|")[0];
   var chavePix = "81988052139";
 
   var msg =
-    "🛒 PEDIDO - JORDÃO ACESSÓRIOS\n\n" +
-    "Nome: " + nome + "\n" +
-    "Telefone: " + telefone + "\n" +
-    "Produto: " + produto + "\n" +
-    "Quantidade: " + quantidade + "\n" +
-    "Total: " + total + "\n" +
-    "Pagamento: " + pagamento + "\n" +
-    (pagamento === "PIX"
-      ? "PIX: " + chavePix + "\n⚠ Pedido confirmado somente após envio do comprovante.\n\n"
-      : "\n") +
-    "Obs: " + (obs || "Nenhuma");
+"🛒 PEDIDO - JORDÃO ACESSÓRIOS\n\n" +
+"Nome: " + nome + "\n" +
+"Telefone: " + telefone + "\n" +
+"Produto: " + produto + "\n" +
+"Quantidade: " + quantidade + "\n" +
+"Total: " + total + "\n" +
+"Pagamento: " + pagamento + "\n" +
+(pagamento === "PIX" ? "PIX: " + chavePix + "\n" : "") +
+"Obs: " + (obs || "Nenhuma");
 
   window.open(
     "https://wa.me/5581988052139?text=" + encodeURIComponent(msg),
@@ -253,6 +213,7 @@ function enviarPedido() {
   );
 }
 </script>
+
 
 
 </body>
