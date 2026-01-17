@@ -164,7 +164,7 @@ function calcularTotal() {
   var qtd = document.getElementById("quantidade").value;
 
   if (!produto || !qtd) {
-    document.getElementById("total").value = "";
+    document.getElementById("total").value = "R$ 0,00";
     return;
   }
 
@@ -175,22 +175,14 @@ function calcularTotal() {
 
 function copiarPix() {
   var chave = document.getElementById("pixChave").innerText;
-  navigator.clipboard.writeText(chave).then(function () {
+  navigator.clipboard.writeText(chave).then(() => {
     document.getElementById("pixMsg").style.display = "block";
-    setTimeout(function () {
+    setTimeout(() => {
       document.getElementById("pixMsg").style.display = "none";
     }, 2000);
   });
 }
 
-<div id="resumoPedido" style="display:none; margin-top:15px; padding:12px; background:#f9f9f9; border:1px solid #ddd; border-radius:8px;">
-  <strong>🧾 Resumo do pedido</strong>
-  <p id="resumoTexto" style="margin-top:8px;"></p>
-
-  <button type="button" onclick="confirmarEnvio()">✅ Confirmar e enviar</button>
-  <button type="button" onclick="fecharResumo()" style="margin-left:8px;">✏️ Editar</button>
-</div>
-  
 function mostrarResumo() {
   var nome = document.getElementById("nome").value;
   var telefone = document.getElementById("telefone").value;
@@ -207,16 +199,15 @@ function mostrarResumo() {
 
   var produto = produtoValor.split("|")[0];
 
-  var resumo =
-    "Nome: " + nome + "<br>" +
-    "Telefone: " + telefone + "<br>" +
-    "Produto: " + produto + "<br>" +
-    "Quantidade: " + quantidade + "<br>" +
-    "Total: " + total + "<br>" +
-    "Pagamento: " + pagamento + "<br>" +
-    (obs ? "Obs: " + obs : "");
+  document.getElementById("resumoTexto").innerHTML =
+    "<b>Nome:</b> " + nome + "<br>" +
+    "<b>Telefone:</b> " + telefone + "<br>" +
+    "<b>Produto:</b> " + produto + "<br>" +
+    "<b>Quantidade:</b> " + quantidade + "<br>" +
+    "<b>Total:</b> " + total + "<br>" +
+    "<b>Pagamento:</b> " + pagamento + "<br>" +
+    (obs ? "<b>Obs:</b> " + obs : "");
 
-  document.getElementById("resumoTexto").innerHTML = resumo;
   document.getElementById("resumoPedido").style.display = "block";
 }
 
@@ -229,12 +220,36 @@ function confirmarEnvio() {
   enviarPedido();
 }
 
+function enviarPedido() {
+  var nome = document.getElementById("nome").value;
+  var telefone = document.getElementById("telefone").value;
+  var produtoValor = document.getElementById("produto").value;
+  var quantidade = document.getElementById("quantidade").value;
+  var pagamento = document.getElementById("pagamento").value;
+  var total = document.getElementById("total").value;
+  var obs = document.getElementById("obs").value;
+
+  var produto = produtoValor.split("|")[0];
+  var chavePix = "81988052139";
+
+  var msg =
+    "🛒 PEDIDO - JORDÃO ACESSÓRIOS\n\n" +
+    "Nome: " + nome + "\n" +
+    "Telefone: " + telefone + "\n" +
+    "Produto: " + produto + "\n" +
+    "Quantidade: " + quantidade + "\n" +
+    "Total: " + total + "\n" +
+    "Pagamento: " + pagamento + "\n" +
+    (pagamento === "PIX" ? "PIX: " + chavePix + "\n⚠️ Pedido confirmado somente após envio do comprovante.\n\n" : "\n") +
+    "Obs: " + (obs || "Nenhuma");
+
   window.open(
     "https://wa.me/5581988052139?text=" + encodeURIComponent(msg),
     "_blank"
   );
 }
 </script>
+
 
   
 </script>
