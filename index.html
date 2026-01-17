@@ -187,32 +187,40 @@ function copiarPix() {
 }
 
 function enviarPedido() {
-  var nome = document.getElementById("nome").value;
-  var telefone = document.getElementById("telefone").value;
-  var produtoValor = document.getElementById("produto").value;
-  var quantidade = document.getElementById("quantidade").value;
-  var pagamento = document.getElementById("pagamento").value;
-  var total = document.getElementById("total").value;
-  var obs = document.getElementById("obs").value;
+  let nome = document.getElementById("nome").value;
+  let telefone = document.getElementById("telefone").value;
+  let pagamento = document.getElementById("pagamento").value;
+  let total = document.getElementById("total").value;
+  let obs = document.getElementById("obs").value || "Nenhuma";
 
-  if (!nome || !telefone || !produtoValor || !quantidade || !pagamento) {
-    alert("Preencha todos os campos.");
+  if (!nome || !telefone || itens.length === 0 || !pagamento) {
+    alert("Preencha todos os campos e adicione pelo menos um produto.");
     return;
   }
 
-  var produto = produtoValor.split("|")[0];
-  var chavePix = "81988052139";
+  let listaProdutos = "";
+  itens.forEach(item => {
+    listaProdutos += `• ${item.quantidade}x ${item.nome} – R$ ${item.subtotal.toFixed(2)}\n`;
+  });
 
-  var msg =
-"🛒 PEDIDO - JORDÃO ACESSÓRIOS\n\n" +
-"Nome: " + nome + "\n" +
-"Telefone: " + telefone + "\n" +
-"Produto: " + produto + "\n" +
-"Quantidade: " + quantidade + "\n" +
-"Total: " + total + "\n" +
-"Pagamento: " + pagamento + "\n" +
-(pagamento === "PIX" ? "PIX: " + chavePix + "\n" : "") +
-"Obs: " + (obs || "Nenhuma");
+  let chavePix = "81988052139";
+
+  let msg =
+`🛒 *PEDIDO - JORDÃO ACESSÓRIOS*
+
+👤 Nome: ${nome}
+📞 Telefone: ${telefone}
+
+📦 *Itens do pedido:*
+${listaProdutos}
+
+💰 Total: ${total}
+💳 Pagamento: ${pagamento}
+🔑 PIX: ${chavePix}
+
+📝 Obs: ${obs}
+
+⚠️ Pedido confirmado após envio do comprovante.`;
 
   window.open(
     "https://wa.me/5581988052139?text=" + encodeURIComponent(msg),
