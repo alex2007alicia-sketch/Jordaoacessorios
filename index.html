@@ -221,6 +221,53 @@ function enviarPedido() {
 }
 </script>
 
+<script>
+let itens = [];
+
+function adicionarItem() {
+  let produtoValor = document.getElementById("produto").value;
+  let quantidade = parseInt(document.getElementById("quantidade").value);
+
+  if (!produtoValor || !quantidade) {
+    alert("Selecione o produto e a quantidade.");
+    return;
+  }
+
+  let partes = produtoValor.split("|");
+  let nome = partes[0];
+  let preco = parseFloat(partes[1]);
+
+  let subtotal = preco * quantidade;
+
+  itens.push({ nome, quantidade, subtotal });
+
+  atualizarLista();
+}
+
+function atualizarLista() {
+  let lista = document.getElementById("listaItens");
+  let total = 0;
+  lista.innerHTML = "";
+
+  itens.forEach((item, index) => {
+    total += item.subtotal;
+
+    lista.innerHTML += `
+      <p>
+        ${item.quantidade}x ${item.nome} – R$ ${item.subtotal.toFixed(2)}
+        <button type="button" onclick="removerItem(${index})">❌</button>
+      </p>
+    `;
+  });
+
+  document.getElementById("total").value = "R$ " + total.toFixed(2);
+}
+
+function removerItem(index) {
+  itens.splice(index, 1);
+  atualizarLista();
+}
+</script>
 
 
 </body>
