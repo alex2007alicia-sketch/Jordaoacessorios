@@ -211,6 +211,7 @@ function mostrarResumo() {
   document.getElementById("resumoPedido").style.display = "block";
 }
 
+<script>
 function fecharResumo() {
   document.getElementById("resumoPedido").style.display = "none";
 }
@@ -240,7 +241,9 @@ function enviarPedido() {
     "Quantidade: " + quantidade + "\n" +
     "Total: " + total + "\n" +
     "Pagamento: " + pagamento + "\n" +
-    (pagamento === "PIX" ? "PIX: " + chavePix + "\n⚠️ Pedido confirmado somente após envio do comprovante.\n\n" : "\n") +
+    (pagamento === "PIX"
+      ? "PIX: " + chavePix + "\n⚠ Pedido confirmado somente após envio do comprovante.\n\n"
+      : "\n") +
     "Obs: " + (obs || "Nenhuma");
 
   window.open(
@@ -248,10 +251,6 @@ function enviarPedido() {
     "_blank"
   );
 }
-</script>
-
-
-  
 </script>
 
 
