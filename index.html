@@ -86,34 +86,41 @@
   <input id="nome" type="text" placeholder="Seu nome" required>
   <input id="telefone" type="tel" placeholder="Seu telefone" required>
 
-  <label>Produto</label>
-<select id="produto" onchange="calcularTotal()">
+<label>Produto</label>
+<select id="produto">
   <option value="">Selecione o produto</option>
   <option value="Capinha|20">Capinha – R$20</option>
-  <option value="Fone bluetooth|100">Fone bluetooth – R$100 kaidi</option>
-  <option value="Fone bluetooth|130">Fone bluetooth – R$130 hmaston</option>
-  <option value="Cabo tipo c|25">Cabo tipo cc – R$25</option>
-  <option value="Cabo USB|20">Cabo USB c – R$20</option>
-  <option value="Cabo v8|20">Cabo USB v8 – R$20</option>
-  <option value="Cabo 2m v8|30">Cabo 2m v8 – R$30</option>
-  <option value="Carregador completo tipo c|10">Carregador completo tipo c – R$10</option>
-  <option value="Cabo 2m tipo c|30">Cabo 2m tipo c – R$30</option>
-  <option value="Cabo lightning|20">Cabo lightning – R$20</option>
-  <option value="Suporte de ima|65">Suporte de ima – R$65</option>
+  <option value="Fone bluetooth Kaidi|100">Fone bluetooth Kaidi – R$100</option>
+  <option value="Fone bluetooth Hmaston|130">Fone bluetooth Hmaston – R$130</option>
+  <option value="Cabo tipo C|25">Cabo tipo C – R$25</option>
+  <option value="Cabo USB|20">Cabo USB – R$20</option>
+  <option value="Cabo V8|20">Cabo V8 – R$20</option>
+  <option value="Cabo 2m V8|30">Cabo 2m V8 – R$30</option>
+  <option value="Carregador completo tipo C|10">Carregador completo tipo C – R$10</option>
+  <option value="Cabo 2m tipo C|30">Cabo 2m tipo C – R$30</option>
+  <option value="Cabo Lightning|20">Cabo Lightning – R$20</option>
+  <option value="Suporte de ímã|65">Suporte de ímã – R$65</option>
   <option value="Suporte de capacete|50">Suporte de capacete – R$50</option>
   <option value="Intercomunicador|130">Intercomunicador – R$130</option>
-  <option value="Caixa de som impermeavel onprime|75">Caixa de som impermeavel onprime – R$75</option>
-  <option value="Bateria portatil 20000mAh|160">Bateria portatil 20000mAh – R$160</option>
-  <option value="Bateria portatil 10000mAh|75">Bateria portatil 10000mAh – R$75</option>
-  <option value="Suporte de aluminio|25">Suporte de aluminio – R$25</option>
+  <option value="Caixa de som impermeável Onprime|75">Caixa de som impermeável Onprime – R$75</option>
+  <option value="Bateria portátil 20000mAh|160">Bateria portátil 20000mAh – R$160</option>
+  <option value="Bateria portátil 10000mAh|75">Bateria portátil 10000mAh – R$75</option>
+  <option value="Suporte de alumínio|25">Suporte de alumínio – R$25</option>
   <option value="Película|10">Película – R$10</option>
 </select>
 
 <label>Quantidade</label>
-<input type="number" id="quantidade" min="1" placeholder="Ex: 2" oninput="calcularTotal()">
+<input type="number" id="quantidade" min="1" value="1">
+
+<button type="button" onclick="adicionarItem()">➕ Adicionar item</button>
+
+<hr>
+
+<div id="listaItens"></div>
 
 <label>Total</label>
-<input type="text" id="total" placeholder="R$ 0,00" readonly>
+<input type="text" id="total" value="R$ 0,00" readonly>
+
 
   <label>Forma de pagamento</label>
 <select id="pagamento" onchange="mostrarPix()">
