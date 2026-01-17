@@ -6,230 +6,92 @@
   <title>Jordão Acessórios</title>
 
   <style>
-    /* TODO O SEU CSS AQUI (sem div nenhuma) */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #5A2CD6, #5575FA);
+      color: white;
+      text-align: center;
+    }
+
+    /* BANNER */
+    .banner-img {
+      background-image: url("banner-site.png");
+      background-size: cover;
+      background-position: center;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0 0 25px 25px;
+      position: relative;
+    }
+
+    .banner-img::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      background: rgba(0,0,0,0.55);
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .btn-banner {
+      display: inline-block;
+      background: #FFDC46;
+      color: #000;
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    header {
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      color: #333;
+      max-width: 420px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    button {
+      background: #FFDC46;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      margin: 20px;
+      font-size: 14px;
+    }
   </style>
 </head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jordão Acessórios</title>
-
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #5A2CD6, #5575FA);
-    color: white;
-    text-align: center;
-  }
-
-  header {
-    padding: 30px 15px;
-  }
-
-  header h1 {
-    margin: 0;
-    font-size: 32px;
-  }
-
-  header p {
-    margin-top: 8px;
-    font-size: 16px;
-  }
-
-  .container {
-    background: white;
-    color: #333;
-    max-width: 420px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 15px;
-  }
-
-  input, select, textarea, button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-  }
-
-  textarea {
-    resize: none;
-  }
-
-  button {
-    background: #FFDC46;
-    color: #000;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    margin-top: 15px;
-  }
-
-  button:hover {
-    opacity: 0.9;
-  }
-
-  footer {
-    margin: 20px 10px;
-    font-size: 14px;
-  }
-  /* BANNER */
-.banner {
-  background: linear-gradient(135deg, #FFDC46, #FFA500);
-  color: #000;
-  padding: 35px 20px;
-  margin-bottom: 20px;
-  border-radius: 0 0 20px 20px;
-}
-
-.banner h2 {
-  margin: 0;
-  font-size: 22px;
-}
-
-.banner p {
-  margin: 10px 0 15px;
-  font-size: 15px;
-}
-
-.btn-banner {
-  display: inline-block;
-  background: #000;
-  color: #fff;
-  padding: 12px 20px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* LISTA DE ITENS */
-#listaItens p {
-  background: #f4f4f4;
-  color: #000;
-  padding: 10px;
-  border-radius: 8px;
-  margin: 8px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* DESTAQUE TOTAL */
-#total {
-  font-weight: bold;
-  background: #f0f8ff;
-}
-/* BANNER COM IMAGEM */
-.banner-img {
-  background-image: url("banner-site.png");
-  background-size: cover;
-  background-position: center;
-  height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.banner-img::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-}
-
-.banner-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: #fff;
-  padding: 20px;
-}
-
-.banner-content h2 {
-  font-size: 26px;
-  margin-bottom: 10px;
-}
-
-.banner-content p {
-  font-size: 15px;
-  margin-bottom: 15px;
-}
-
-/* AVALIAÇÕES */
-.avaliacoes {
-  background: #fff;
-  color: #000;
-  margin: 20px;
-  padding: 20px;
-  border-radius: 15px;
-}
-
-.avaliacoes h3 {
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-.avaliacao {
-  background: #f5f5f5;
-  padding: 12px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-
-.avaliacao span {
-  display: block;
-  margin-top: 5px;
-  font-weight: bold;
-}
-.banner-img {
-  background-image: url("banner-site.png");
-  background-size: cover;
-  background-position: center;
-  height: 280px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0 0 25px 25px;
-}
-
-.banner-content {
-  background: rgba(0,0,0,0.55);
-  padding: 20px;
-  border-radius: 15px;
-  color: #fff;
-}
-
-.banner-content h2 {
-  margin: 0;
-  font-size: 22px;
-}
-
-.banner-content p {
-  margin: 10px 0;
-}
-
-.btn-banner {
-  display: inline-block;
-  background: #FFDC46;
-  color: #000;
-  padding: 12px 22px;
-  border-radius: 30px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-</style>
-</head>
-<script>
-
-</script>
 <body>
 
+<!-- BANNER -->
 <div class="banner-img">
   <div class="banner-content">
     <h2>Tudo para o seu celular</h2>
@@ -238,211 +100,71 @@
   </div>
 </div>
 
-<body>
-
-<header style="text-align:center; padding:20px;">
-  <img src="./logo-site.png" alt="Jordão Acessórios" width="150">
+<!-- HEADER -->
+<header>
+  <img src="logo-site.png" width="140" alt="Jordão Acessórios">
   <h1>Jordão Acessórios</h1>
-  <p>Capas • Fones • Carregadores • Acessórios</p>
 </header>
 
-<div class="container">
+<!-- FORMULÁRIO -->
+<div class="container" id="pedido">
   <h2>📝 Fazer Pedido</h2>
 
-  <input id="nome" type="text" placeholder="Seu nome" required>
-  <input id="telefone" type="tel" placeholder="Seu telefone" required>
+  <input id="nome" placeholder="Seu nome">
+  <input id="telefone" placeholder="Seu telefone">
 
-<label>Produto</label>
-<select id="produto">
-  <option value="">Selecione o produto</option>
-  <option value="Capinha|20">Capinha – R$20</option>
-  <option value="Fone bluetooth Kaidi|100">Fone bluetooth Kaidi – R$100</option>
-  <option value="Fone bluetooth Hmaston|130">Fone bluetooth Hmaston – R$130</option>
-  <option value="Cabo tipo C|25">Cabo tipo C – R$25</option>
-  <option value="Cabo USB|20">Cabo USB – R$20</option>
-  <option value="Cabo V8|20">Cabo V8 – R$20</option>
-  <option value="Cabo 2m V8|30">Cabo 2m V8 – R$30</option>
-  <option value="Carregador completo tipo C|10">Carregador completo tipo C – R$10</option>
-  <option value="Cabo 2m tipo C|30">Cabo 2m tipo C – R$30</option>
-  <option value="Cabo Lightning|20">Cabo Lightning – R$20</option>
-  <option value="Suporte de ímã|65">Suporte de ímã – R$65</option>
-  <option value="Suporte de capacete|50">Suporte de capacete – R$50</option>
-  <option value="Intercomunicador|130">Intercomunicador – R$130</option>
-  <option value="Caixa de som impermeável Onprime|75">Caixa de som impermeável Onprime – R$75</option>
-  <option value="Bateria portátil 20000mAh|160">Bateria portátil 20000mAh – R$160</option>
-  <option value="Bateria portátil 10000mAh|75">Bateria portátil 10000mAh – R$75</option>
-  <option value="Suporte de alumínio|25">Suporte de alumínio – R$25</option>
-  <option value="Película|10">Película – R$10</option>
-</select>
+  <select id="produto">
+    <option value="">Selecione o produto</option>
+    <option value="Capinha|20">Capinha – R$20</option>
+    <option value="Película|10">Película – R$10</option>
+  </select>
 
-<label>Quantidade</label>
-<input type="number" id="quantidade" min="1" value="1">
+  <input type="number" id="quantidade" value="1">
 
-<button type="button" onclick="adicionarItem()">➕ Adicionar item</button>
+  <button onclick="adicionarItem()">Adicionar item</button>
 
-<hr>
+  <div id="listaItens"></div>
 
-<div id="listaItens"></div>
+  <input id="total" readonly value="R$ 0,00">
 
-<label>Total</label>
-<input type="text" id="total" value="R$ 0,00" readonly>
-
-
-  <label>Forma de pagamento</label>
-<select id="pagamento" onchange="mostrarPix()">
-  <option value="">Selecione</option>
-  <option value="PIX">PIX</option>
-  <option value="Dinheiro">Dinheiro</option>
-  <option value="Cartão">Cartão</option>
-</select>
-
-<div id="pixInfo" style="display:none; margin-top:10px; padding:10px; background:#f1f1f1; border-radius:8px; text-align:center;">
-  <strong>💳 Pagamento via PIX</strong><br><br>
-
-  <span id="pixChave">81988052139</span><br><br>
-
-  <button type="button" onclick="copiarPix()">📋 Copiar PIX</button>
-  <p id="pixMsg" style="color:green; display:none;">PIX copiado!</p>
-  
-  <p style="margin-top:10px; color:#b30000; font-weight:bold;">
-  ⚠️ Pedido só confirmado após envio do comprovante.
-</p>
-
-  <br>
-
+  <button onclick="enviarPedido()">Enviar pedido</button>
 </div>
-
-  <textarea id="obs" rows="3" placeholder="Observações"></textarea>
-
- <button type="button" onclick="enviarPedido()">Enviar pedido</button>
-
-
-</div> 
-
 
 <footer>
   📞 81 98805-2139 <br>
   📍 Rua Silvestre Agostinho Sales, Jardim Jordão
 </footer>
 
-
-<script>
-function calcularTotal() {
-  var produto = document.getElementById("produto").value;
-  var qtd = document.getElementById("quantidade").value;
-
-  if (!produto || !qtd) {
-    document.getElementById("total").value = "R$ 0,00";
-    return;
-  }
-
-  var preco = produto.split("|")[1];
-  document.getElementById("total").value = "R$ " + (preco * qtd).toFixed(2);
-}
-
-function mostrarPix() {
-  var pagamento = document.getElementById("pagamento").value;
-  var pixDiv = document.getElementById("pixInfo");
-  pixDiv.style.display = pagamento === "PIX" ? "block" : "none";
-}
-
-function copiarPix() {
-  var chave = document.getElementById("pixChave").innerText;
-  navigator.clipboard.writeText(chave);
-  document.getElementById("pixMsg").style.display = "block";
-}
-
-function enviarPedido() {
-  let nome = document.getElementById("nome").value;
-  let telefone = document.getElementById("telefone").value;
-  let pagamento = document.getElementById("pagamento").value;
-  let total = document.getElementById("total").value;
-  let obs = document.getElementById("obs").value || "Nenhuma";
-
-  if (!nome || !telefone || itens.length === 0 || !pagamento) {
-    alert("Preencha todos os campos e adicione pelo menos um produto.");
-    return;
-  }
-
-  let listaProdutos = "";
-  itens.forEach(item => {
-    listaProdutos += `• ${item.quantidade}x ${item.nome} – R$ ${item.subtotal.toFixed(2)}\n`;
-  });
-
-  let chavePix = "81988052139";
-
-  let msg =
-`🛒 *PEDIDO - JORDÃO ACESSÓRIOS*
-
-👤 Nome: ${nome}
-📞 Telefone: ${telefone}
-
-📦 *Itens do pedido:*
-${listaProdutos}
-
-💰 Total: ${total}
-💳 Pagamento: ${pagamento}
-🔑 PIX: ${chavePix}
-
-📝 Obs: ${obs}
-
-⚠️ Pedido confirmado após envio do comprovante.`;
-
-  window.open(
-    "https://wa.me/5581988052139?text=" + encodeURIComponent(msg),
-    "_blank"
-  );
-}
-</script>
-
 <script>
 let itens = [];
 
 function adicionarItem() {
-  let produtoValor = document.getElementById("produto").value;
-  let quantidade = parseInt(document.getElementById("quantidade").value);
+  let produto = document.getElementById("produto").value;
+  let qtd = parseInt(document.getElementById("quantidade").value);
+  if (!produto) return;
 
-  if (!produtoValor || !quantidade) {
-    alert("Selecione o produto e a quantidade.");
-    return;
-  }
-
-  let partes = produtoValor.split("|");
-  let nome = partes[0];
-  let preco = parseFloat(partes[1]);
-
-  let subtotal = preco * quantidade;
-
-  itens.push({ nome, quantidade, subtotal });
-
-  atualizarLista();
+  let [nome, preco] = produto.split("|");
+  itens.push({ nome, qtd, subtotal: preco*qtd });
+  atualizar();
 }
 
-function atualizarLista() {
+function atualizar() {
   let lista = document.getElementById("listaItens");
   let total = 0;
   lista.innerHTML = "";
-
-  itens.forEach((item, index) => {
-    total += item.subtotal;
-
-    lista.innerHTML += `
-      <p>
-        ${item.quantidade}x ${item.nome} – R$ ${item.subtotal.toFixed(2)}
-        <button type="button" onclick="removerItem(${index})">❌</button>
-      </p>
-    `;
+  itens.forEach(i => {
+    total += i.subtotal;
+    lista.innerHTML += `<p>${i.qtd}x ${i.nome} – R$ ${i.subtotal}</p>`;
   });
-
   document.getElementById("total").value = "R$ " + total.toFixed(2);
 }
 
-function removerItem(index) {
-  itens.splice(index, 1);
-  atualizarLista();
+function enviarPedido() {
+  if (!itens.length) return alert("Adicione itens");
+  window.open("https://wa.me/5581988052139");
 }
 </script>
 
-
 </body>
 </html>
+
